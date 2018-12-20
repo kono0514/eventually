@@ -1,0 +1,49 @@
+{
+    "name": "altek/eventually",
+    "description": "The missing Eloquent events for many-to-many relations.",
+    "keywords": [
+        "eloquent",
+        "events",
+        "eventually",
+        "laravel",
+        "lumen",
+        "many-to-many",
+        "pivot",
+        "relations"
+    ],
+    "homepage": "https://packagist.org/packages/altek/eventually",
+    "type": "package",
+    "license": "MIT",
+    "support": {
+        "issues": "https://gitlab.com/altek/eventually/issues",
+        "source": "https://gitlab.com/altek/eventually"
+    },
+    "authors": [
+        {
+            "name": "Quetzy Garcia",
+            "email": "quetzyg@altek.org"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3",
+        "illuminate/database": "5.2.* || 5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Altek\\Eventually\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Altek\\Eventually\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
