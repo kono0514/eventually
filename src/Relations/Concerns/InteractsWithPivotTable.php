@@ -163,10 +163,7 @@ trait InteractsWithPivotTable
     {
         // When the first argument is null, it means that all models will be detached from
         // the relationship, requiring the corresponding ids to be resolved
-        $data = $this->getPivotData($ids ?? $this->query
-            ->pluck($this->query->qualifyColumn($this->relatedKey))
-            ->all()
-        );
+        $data = $this->getPivotData($ids ?? $this->query->pluck($this->relatedKey)->all());
 
         if ($this->parent->firePivotEvent('detaching', true, $this->getRelationName(), $data) === false) {
             return false;
