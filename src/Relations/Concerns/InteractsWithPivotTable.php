@@ -83,8 +83,8 @@ trait InteractsWithPivotTable
     /**
      * Sync the intermediate tables with a list of IDs or collection of models.
      *
-     * @param \Illuminate\Support\Collection|\Illuminate\Database\Eloquent\Model|array $ids
-     * @param bool                                                                     $detaching
+     * @param mixed $ids
+     * @param bool  $detaching
      *
      * @return array|bool
      */
