@@ -6,8 +6,8 @@ namespace Altek\Eventually\Concerns;
 
 use Altek\Eventually\Relations\BelongsToMany;
 use Altek\Eventually\Relations\MorphToMany;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 trait HasRelationships
 {
