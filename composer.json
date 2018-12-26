@@ -2,6 +2,8 @@
     "name": "altek/eventually",
     "description": "The missing Eloquent events for many-to-many relations.",
     "keywords": [
+        "attach",
+        "detach",
         "eloquent",
         "events",
         "eventually",
@@ -9,7 +11,10 @@
         "lumen",
         "many-to-many",
         "pivot",
-        "relations"
+        "relations",
+        "sync",
+        "toggle",
+        "update"
     ],
     "homepage": "https://packagist.org/packages/altek/eventually",
     "type": "package",
