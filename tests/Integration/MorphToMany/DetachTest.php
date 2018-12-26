@@ -106,7 +106,7 @@ class DetachTest extends EventuallyTestCase
 
         $this->assertSame($results, $user->awards()->detach($id));
 
-        $this->assertCount(2-$results, $user->awards()->get());
+        $this->assertCount(2 - $results, $user->awards()->get());
 
         Event::assertDispatched(sprintf('eloquent.detaching: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
             $this->assertArraySubset($expectedPayload, $payload, true);
@@ -143,7 +143,7 @@ class DetachTest extends EventuallyTestCase
                         1 => [],
                         2 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -159,7 +159,7 @@ class DetachTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -177,7 +177,7 @@ class DetachTest extends EventuallyTestCase
                     'data'     => [
                         2 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -197,7 +197,7 @@ class DetachTest extends EventuallyTestCase
                         2 => [],
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -213,7 +213,7 @@ class DetachTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -230,7 +230,7 @@ class DetachTest extends EventuallyTestCase
                         1 => [],
                         2 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -246,7 +246,7 @@ class DetachTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -266,7 +266,7 @@ class DetachTest extends EventuallyTestCase
                         2 => [],
                         1 => [],
                     ],
-                ]
+                ],
             ],
         ];
     }

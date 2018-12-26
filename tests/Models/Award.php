@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Altek\Eventually\Tests\Models;
 
 use Altek\Eventually\Eventually;
-
 use Altek\Eventually\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\Model;
 

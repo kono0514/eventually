@@ -143,7 +143,7 @@ class SyncTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -172,7 +172,7 @@ class SyncTest extends EventuallyTestCase
                     'data'     => [
                         2 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -210,7 +210,7 @@ class SyncTest extends EventuallyTestCase
                             'liked' => true,
                         ],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -235,7 +235,7 @@ class SyncTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -262,7 +262,7 @@ class SyncTest extends EventuallyTestCase
                         1 => [],
                         2 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -287,7 +287,7 @@ class SyncTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -317,7 +317,7 @@ class SyncTest extends EventuallyTestCase
                         2 => [],
                         1 => [],
                     ],
-                ]
+                ],
             ],
         ];
     }

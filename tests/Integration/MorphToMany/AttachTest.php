@@ -129,7 +129,7 @@ class AttachTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -151,7 +151,7 @@ class AttachTest extends EventuallyTestCase
                             'prize' => 1024,
                         ],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -179,7 +179,7 @@ class AttachTest extends EventuallyTestCase
                             'prize' => 8192,
                         ],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -195,7 +195,7 @@ class AttachTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -212,7 +212,7 @@ class AttachTest extends EventuallyTestCase
                         1 => [],
                         2 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -228,7 +228,7 @@ class AttachTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -248,7 +248,7 @@ class AttachTest extends EventuallyTestCase
                         2 => [],
                         1 => [],
                     ],
-                ]
+                ],
             ],
         ];
     }

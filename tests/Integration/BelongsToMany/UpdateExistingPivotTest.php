@@ -145,7 +145,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -168,7 +168,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                     'data'     => [
                         2 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -191,7 +191,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                         2 => [],
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -210,7 +210,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -230,7 +230,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                         1 => [],
                         2 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -249,7 +249,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -272,7 +272,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                         2 => [],
                         1 => [],
                     ],
-                ]
+                ],
             ],
         ];
     }

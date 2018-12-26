@@ -137,7 +137,7 @@ class ToggleTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -160,7 +160,7 @@ class ToggleTest extends EventuallyTestCase
                     'data'     => [
                         2 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -186,7 +186,7 @@ class ToggleTest extends EventuallyTestCase
                         2 => [],
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -207,7 +207,7 @@ class ToggleTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -230,7 +230,7 @@ class ToggleTest extends EventuallyTestCase
                         1 => [],
                         2 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -251,7 +251,7 @@ class ToggleTest extends EventuallyTestCase
                     'data'     => [
                         1 => [],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -277,7 +277,7 @@ class ToggleTest extends EventuallyTestCase
                         2 => [],
                         1 => [],
                     ],
-                ]
+                ],
             ],
         ];
     }

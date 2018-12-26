@@ -148,7 +148,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                             'prize' => 128,
                         ],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -173,7 +173,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                             'prize' => 1024,
                         ],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -202,7 +202,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                             'prize' => 32768,
                         ],
                     ],
-                ]
+                ],
             ],
 
             [
@@ -225,7 +225,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                             'prize' => 16384,
                         ],
                     ],
-                ]
+                ],
             ],
         ];
     }
