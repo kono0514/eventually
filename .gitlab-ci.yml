@@ -1,0 +1,36 @@
+cache:
+  paths:
+  - vendor/
+
+before_script:
+  # Install git
+  - apt-get update -yqq
+  - apt-get install git -yqq
+
+  # Add XDebug for reporting
+  - pecl install xdebug-2.7.0beta1
+  - docker-php-ext-enable xdebug
+
+  # Install composer
+  - curl -sS https://getcomposer.org/installer | php
+
+  # Install package dependencies
+  - php composer.phar install --no-interaction
+
+test:7.1:
+  image: php:7.1
+  script:
+    - php vendor/bin/phpunit --colors=never --coverage-text --coverage-clover clover.xml --testdox
+    - bash <(curl -s https://codecov.io/bash)
+
+test:7.2:
+  image: php:7.2
+  script:
+    - php vendor/bin/phpunit --colors=never --coverage-text --coverage-clover clover.xml --testdox
+    - bash <(curl -s https://codecov.io/bash)
+
+test:7.3:
+  image: php:7.3
+  script:
+    - php vendor/bin/phpunit --colors=never --coverage-text --coverage-clover clover.xml --testdox
+    - bash <(curl -s https://codecov.io/bash)
