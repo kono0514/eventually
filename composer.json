@@ -1,6 +1,6 @@
 {
     "name": "altek/eventually",
-    "description": "The missing Eloquent events for many-to-many relations.",
+    "description": "The missing many-to-many Eloquent events.",
     "keywords": [
         "attach",
         "detach",
