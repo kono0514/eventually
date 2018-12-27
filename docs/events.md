@@ -20,7 +20,7 @@ Event name              | Triggered by
 ## Event listeners
 The package provides `static` methods to quickly register event listeners with the dispatcher.
 
-These can be called from the model's `boot()` method.
+These can be set in the model's `boot()` method.
 
 ```php
 <?php
