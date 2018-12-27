@@ -83,7 +83,7 @@ class User extends Model
 > **TIP:** Other event handling alternatives are the `Event::listen()` method, creating a listener and registering it in the `EventServiceProvider` or defining an [Observer](https://laravel.com/docs/5.7/eloquent#observers).
 
 ## Halting event propagation
-To cease event propagation, simply return `false` from the listener `handle()` method.
+To cease event propagation, simply return `false` from the listener's `handle()` method.
 
 # Examples
 ```php
