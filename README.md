@@ -11,6 +11,12 @@ This package extends the [Eloquent](https://laravel.com/docs/5.7/eloquent) ORM b
 ## Documentation
 The package documentation can be found [here](docs/index.md).
 
+## Changelog
+For information on recent changes, check the [CHANGELOG](CHANGELOG.md).
+
+## Contributing
+Contributions are always welcome, but before anything else, make sure you get acquainted with the [CONTRIBUTING](CONTRIBUTING.md) guide.
+
 ## Credits
 - [Quetzy Garcia](https://gitlab.com/quetzyg)
 
