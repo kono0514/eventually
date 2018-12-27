@@ -141,8 +141,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         1 => [],
                     ],
                 ],
@@ -164,8 +164,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         2 => [],
                     ],
                 ],
@@ -186,8 +186,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         2 => [],
                         1 => [],
                     ],
@@ -206,8 +206,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         1 => [],
                     ],
                 ],
@@ -225,8 +225,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         1 => [],
                         2 => [],
                     ],
@@ -245,8 +245,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         1 => [],
                     ],
                 ],
@@ -267,8 +267,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         2 => [],
                         1 => [],
                     ],

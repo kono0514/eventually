@@ -138,8 +138,8 @@ class DetachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         1 => [],
                         2 => [],
                     ],
@@ -155,8 +155,8 @@ class DetachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         1 => [],
                     ],
                 ],
@@ -173,8 +173,8 @@ class DetachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         2 => [],
                     ],
                 ],
@@ -192,8 +192,8 @@ class DetachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         2 => [],
                         1 => [],
                     ],
@@ -209,8 +209,8 @@ class DetachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         1 => [],
                     ],
                 ],
@@ -225,8 +225,8 @@ class DetachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         1 => [],
                         2 => [],
                     ],
@@ -242,8 +242,8 @@ class DetachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         1 => [],
                     ],
                 ],
@@ -261,8 +261,8 @@ class DetachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'articles',
-                    'data'     => [
+                    'relation'   => 'articles',
+                    'properties' => [
                         2 => [],
                         1 => [],
                     ],

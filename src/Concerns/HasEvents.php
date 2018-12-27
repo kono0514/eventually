@@ -33,11 +33,11 @@ trait HasEvents
      * @param string $event
      * @param bool   $halt
      * @param string $relation
-     * @param array  $data
+     * @param array  $properties
      *
      * @return mixed
      */
-    public function firePivotEvent($event, $halt = true, string $relation = null, array $data = [])
+    public function firePivotEvent($event, $halt = true, string $relation = null, array $properties = [])
     {
         if (!isset(static::$dispatcher)) {
             return true;
@@ -54,9 +54,9 @@ trait HasEvents
         }
 
         return !empty($result) ? $result : static::$dispatcher->{$method}("eloquent.{$event}: ".static::class, [
-            'model'    => $this,
-            'relation' => $relation,
-            'data'     => $data,
+            'model'      => $this,
+            'relation'   => $relation,
+            'properties' => $properties,
         ]);
     }
 
