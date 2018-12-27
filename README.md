@@ -8,6 +8,9 @@ This package extends the [Eloquent](https://laravel.com/docs/5.7/eloquent) ORM b
 -----------|---------------|--------------------|-------------
  1.x       | 5.4.x - 5.7.x | Actively supported | >= 7.1.3
 
+## Documentation
+The package documentation can be found [here](docs/index.md).
+
 ## Credits
 - [Quetzy Garcia](https://gitlab.com/quetzyg)
 
