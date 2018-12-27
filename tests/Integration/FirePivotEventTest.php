@@ -15,7 +15,7 @@ class FirePivotEventTest extends EventuallyTestCase
     /**
      * @test
      */
-    public function itDoesNotFireEventsDueToDispatcherBeingUnset(): void
+    public function itDoesNotFireEventsWhenDispatcherIsNotSet(): void
     {
         User::unsetEventDispatcher();
 
