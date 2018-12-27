@@ -30,7 +30,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
             ], $data, true);
         });
 
-        User::updatedExistingPivot(function ($user, $relation, $data) {
+        User::existingPivotUpdated(function ($user, $relation, $data) {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -56,7 +56,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
     /**
      * @test
      */
-    public function itPreventsPivotFromBeingUpdated(): void
+    public function itPreventsExistingPivotFromBeingUpdated(): void
     {
         User::updatingExistingPivot(function () {
             return false;
@@ -116,7 +116,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
             return true;
         });
 
-        Event::assertDispatched(sprintf('eloquent.updatedExistingPivot: %s', User::class), function ($event, $payload) use ($expectedPayload) {
+        Event::assertDispatched(sprintf('eloquent.existingPivotUpdated: %s', User::class), function ($event, $payload) use ($expectedPayload) {
             $this->assertArraySubset($expectedPayload, $payload, true);
 
             return true;

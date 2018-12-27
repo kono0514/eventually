@@ -122,7 +122,7 @@ trait InteractsWithPivotTable
 
         $updated = parent::updateExistingPivot($id, $attributes, $touch);
 
-        $this->parent->firePivotEvent('updatedExistingPivot', false, $this->getRelationName(), $data);
+        $this->parent->firePivotEvent('existingPivotUpdated', false, $this->getRelationName(), $data);
 
         return $updated;
     }

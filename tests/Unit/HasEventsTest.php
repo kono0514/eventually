@@ -21,7 +21,7 @@ class HasEventsTest extends EventuallyTestCase
         $this->assertContains('syncing', $user->getObservableEvents());
         $this->assertContains('synced', $user->getObservableEvents());
         $this->assertContains('updatingExistingPivot', $user->getObservableEvents());
-        $this->assertContains('updatedExistingPivot', $user->getObservableEvents());
+        $this->assertContains('existingPivotUpdated', $user->getObservableEvents());
         $this->assertContains('attaching', $user->getObservableEvents());
         $this->assertContains('attached', $user->getObservableEvents());
         $this->assertContains('detaching', $user->getObservableEvents());

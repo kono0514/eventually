@@ -19,7 +19,7 @@ trait HasEvents
             'syncing',
             'synced',
             'updatingExistingPivot',
-            'updatedExistingPivot',
+            'existingPivotUpdated',
             'attaching',
             'attached',
             'detaching',
@@ -121,15 +121,15 @@ trait HasEvents
     }
 
     /**
-     * Register an updatedExistingPivot model event with the dispatcher.
+     * Register an existingPivotUpdated model event with the dispatcher.
      *
      * @param \Closure|string $callback
      *
      * @return void
      */
-    public static function updatedExistingPivot($callback): void
+    public static function existingPivotUpdated($callback): void
     {
-        static::registerModelEvent('updatedExistingPivot', $callback);
+        static::registerModelEvent('existingPivotUpdated', $callback);
     }
 
     /**
