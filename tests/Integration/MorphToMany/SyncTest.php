@@ -139,8 +139,8 @@ class SyncTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'awards',
-                    'data'     => [
+                    'relation'   => 'awards',
+                    'properties' => [
                         1 => [],
                     ],
                 ],
@@ -168,8 +168,8 @@ class SyncTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'awards',
-                    'data'     => [
+                    'relation'   => 'awards',
+                    'properties' => [
                         2 => [],
                     ],
                 ],
@@ -201,8 +201,8 @@ class SyncTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'awards',
-                    'data'     => [
+                    'relation'   => 'awards',
+                    'properties' => [
                         2 => [
                             'prize' => 2048,
                         ],
@@ -231,8 +231,8 @@ class SyncTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'awards',
-                    'data'     => [
+                    'relation'   => 'awards',
+                    'properties' => [
                         1 => [],
                     ],
                 ],
@@ -257,8 +257,8 @@ class SyncTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'awards',
-                    'data'     => [
+                    'relation'   => 'awards',
+                    'properties' => [
                         1 => [],
                         2 => [],
                     ],
@@ -283,8 +283,8 @@ class SyncTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'awards',
-                    'data'     => [
+                    'relation'   => 'awards',
+                    'properties' => [
                         1 => [],
                     ],
                 ],
@@ -312,8 +312,8 @@ class SyncTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation' => 'awards',
-                    'data'     => [
+                    'relation'   => 'awards',
+                    'properties' => [
                         2 => [],
                         1 => [],
                     ],
