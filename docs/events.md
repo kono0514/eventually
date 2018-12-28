@@ -7,7 +7,6 @@ Event name              | Triggered by
 `toggled`               | `toggle()`
 `syncing`               | `sync()`
 `synced`                | `sync()`
-`syncing`               | `sync()`
 `updatingExistingPivot` | `updateExistingPivot()`
 `existingPivotUpdated`  | `updateExistingPivot()`
 `attaching`             | `attach()`, `toggle()`, `sync()`
@@ -80,34 +79,36 @@ class User extends Model
 }
 ```
 
-> **TIP:** Other event handling alternatives are the `Event::listen()` method, creating a listener and registering it in the `EventServiceProvider` or defining an [Observer](https://laravel.com/docs/5.7/eloquent#observers).
+Alternatively, the same can be achieved with the `Event::listen()` method, an [Observer](https://laravel.com/docs/5.7/eloquent#observers) or an [Event Listener](https://laravel.com/docs/5.7/events#defining-listeners).
 
 ## Halting event propagation
-To cease event propagation, simply return `false` from the listener's `handle()` method.
+To cease the event propagation, simply return `false` from the listener's handling method/function.
+
+As a side effect, the pivot operation will be aborted when doing so from the `toggling`, `syncing`, `updatingExistingPivot`, `attaching` or `detaching` events.
 
 # Examples
 ```php
-// Prevent a relation from being toggled
+// Stop event propagation and abort the toggle operation as a consequence
 static::toggling(function ($model, $relation, $properties) {
     return false;
 });
 
-// Prevent a relation from being synced
+// Stop event propagation and abort the sync operation as a consequence
 static::syncing(function ($model, $relation, $properties) {
     return false;
 });
 
-// Prevent a pivot from being updated
+// Stop event propagation and abort the updateExistingPivot operation as a consequence
 static::updatingExistingPivot(function ($model, $relation, $properties) {
     return false;
 });
 
-// Prevent a relation from being attached
+// Stop event propagation and abort the attach operation as a consequence
 static::attaching(function ($model, $relation, $properties) {
     return false;
 });
 
-// Prevent a relation from being detached
+// Stop event propagation and abort the detach operation as a consequence
 static::detaching(function ($model, $relation, $properties) {
     return false;
 });
