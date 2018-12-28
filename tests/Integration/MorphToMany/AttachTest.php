@@ -125,8 +125,8 @@ class AttachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation'   => 'awards',
-                    'properties' => [
+                    1 => 'awards',
+                    2 => [
                         1 => [],
                     ],
                 ],
@@ -145,8 +145,8 @@ class AttachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation'   => 'awards',
-                    'properties' => [
+                    1 => 'awards',
+                    2 => [
                         2 => [
                             'prize' => 1024,
                         ],
@@ -170,8 +170,8 @@ class AttachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation'   => 'awards',
-                    'properties' => [
+                    1 => 'awards',
+                    2 => [
                         2 => [
                             'prize' => 4096,
                         ],
@@ -191,8 +191,8 @@ class AttachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation'   => 'awards',
-                    'properties' => [
+                    1 => 'awards',
+                    2 => [
                         1 => [],
                     ],
                 ],
@@ -207,8 +207,8 @@ class AttachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation'   => 'awards',
-                    'properties' => [
+                    1 => 'awards',
+                    2 => [
                         1 => [],
                         2 => [],
                     ],
@@ -224,8 +224,8 @@ class AttachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation'   => 'awards',
-                    'properties' => [
+                    1 => 'awards',
+                    2 => [
                         1 => [],
                     ],
                 ],
@@ -243,8 +243,8 @@ class AttachTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation'   => 'awards',
-                    'properties' => [
+                    1 => 'awards',
+                    2 => [
                         2 => [],
                         1 => [],
                     ],

@@ -142,8 +142,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation'   => 'awards',
-                    'properties' => [
+                    1 => 'awards',
+                    2 => [
                         1 => [
                             'prize' => 128,
                         ],
@@ -167,8 +167,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation'   => 'awards',
-                    'properties' => [
+                    1 => 'awards',
+                    2 => [
                         2 => [
                             'prize' => 1024,
                         ],
@@ -193,8 +193,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation'   => 'awards',
-                    'properties' => [
+                    1 => 'awards',
+                    2 => [
                         2 => [
                             'prize' => 32768,
                         ],
@@ -219,8 +219,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
                 // Expected payload
                 [
-                    'relation'   => 'awards',
-                    'properties' => [
+                    1 => 'awards',
+                    2 => [
                         1 => [
                             'prize' => 16384,
                         ],
