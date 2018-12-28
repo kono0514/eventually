@@ -19,24 +19,24 @@ class SyncTest extends EventuallyTestCase
      */
     public function itSuccessfullyRegistersEventListeners(): void
     {
-        User::syncing(function ($user, $relation, $data) {
+        User::syncing(function ($user, $relation, $properties) {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('awards', $relation);
 
             $this->assertArraySubset([
                 1 => [],
-            ], $data, true);
+            ], $properties, true);
         });
 
-        User::synced(function ($user, $relation, $data) {
+        User::synced(function ($user, $relation, $properties) {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('awards', $relation);
 
             $this->assertArraySubset([
                 1 => [],
-            ], $data, true);
+            ], $properties, true);
         });
 
         $user = factory(User::class)->create();

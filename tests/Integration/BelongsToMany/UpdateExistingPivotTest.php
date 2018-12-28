@@ -19,7 +19,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
      */
     public function itSuccessfullyRegistersEventListeners(): void
     {
-        User::updatingExistingPivot(function ($user, $relation, $data) {
+        User::updatingExistingPivot(function ($user, $relation, $properties) {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -27,10 +27,10 @@ class UpdateExistingPivotTest extends EventuallyTestCase
             $this->assertArraySubset([
                 1 => [],
                 2 => [],
-            ], $data, true);
+            ], $properties, true);
         });
 
-        User::existingPivotUpdated(function ($user, $relation, $data) {
+        User::existingPivotUpdated(function ($user, $relation, $properties) {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -38,7 +38,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
             $this->assertArraySubset([
                 1 => [],
                 2 => [],
-            ], $data, true);
+            ], $properties, true);
         });
 
         $user = factory(User::class)->create();

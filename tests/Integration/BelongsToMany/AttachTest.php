@@ -19,7 +19,7 @@ class AttachTest extends EventuallyTestCase
      */
     public function itSuccessfullyRegistersEventListeners(): void
     {
-        User::attaching(function ($user, $relation, $data) {
+        User::attaching(function ($user, $relation, $properties) {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -27,10 +27,10 @@ class AttachTest extends EventuallyTestCase
             $this->assertArraySubset([
                 1 => [],
                 2 => [],
-            ], $data, true);
+            ], $properties, true);
         });
 
-        User::attached(function ($user, $relation, $data) {
+        User::attached(function ($user, $relation, $properties) {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -38,7 +38,7 @@ class AttachTest extends EventuallyTestCase
             $this->assertArraySubset([
                 1 => [],
                 2 => [],
-            ], $data, true);
+            ], $properties, true);
         });
 
         $user = factory(User::class)->create();

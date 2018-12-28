@@ -19,24 +19,24 @@ class ToggleTest extends EventuallyTestCase
      */
     public function itSuccessfullyRegistersEventListeners(): void
     {
-        User::toggling(function ($user, $relation, $data) {
+        User::toggling(function ($user, $relation, $properties) {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
 
             $this->assertArraySubset([
                 1 => [],
-            ], $data, true);
+            ], $properties, true);
         });
 
-        User::toggled(function ($user, $relation, $data) {
+        User::toggled(function ($user, $relation, $properties) {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
 
             $this->assertArraySubset([
                 1 => [],
-            ], $data, true);
+            ], $properties, true);
         });
 
         $user = factory(User::class)->create();

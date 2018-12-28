@@ -19,7 +19,7 @@ class DetachTest extends EventuallyTestCase
      */
     public function itSuccessfullyRegistersEventListeners(): void
     {
-        User::detaching(function ($user, $relation, $data) {
+        User::detaching(function ($user, $relation, $properties) {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -27,10 +27,10 @@ class DetachTest extends EventuallyTestCase
             $this->assertArraySubset([
                 1 => [],
                 2 => [],
-            ], $data, true);
+            ], $properties, true);
         });
 
-        User::detached(function ($user, $relation, $data) {
+        User::detached(function ($user, $relation, $properties) {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -38,7 +38,7 @@ class DetachTest extends EventuallyTestCase
             $this->assertArraySubset([
                 1 => [],
                 2 => [],
-            ], $data, true);
+            ], $properties, true);
         });
 
         $user = factory(User::class)->create();
