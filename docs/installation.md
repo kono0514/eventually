@@ -28,4 +28,4 @@ class User extends Model
 }
 ```
 
-From this point on, any `BelongsToMany` or `MorphToMany` relation will fire the corresponding events when using the `toggle()`, `sync()`, `updateExistingPivot()`, `attach()` or `detach()` method.
+From this point on, any `BelongsToMany` or `MorphToMany` relation will fire the corresponding [events](events.md) when using the `toggle()`, `sync()`, `updateExistingPivot()`, `attach()` or `detach()` method.
