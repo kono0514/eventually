@@ -10,7 +10,7 @@ composer require altek/eventually
 > **NOTICE:** This package supports [illuminate/database](https://packagist.org/packages/illuminate/database) from version **5.4** onward.
 
 # Model setup
-By using the `Altek\Eventually\Eventually` trait on an Eloquent model, all the pivot event functionality becomes available.
+By using the `Altek\Eventually\Eventually` trait on an Eloquent model, the new pivot events become available.
 
 ## Example
 ```php
@@ -28,4 +28,4 @@ class User extends Model
 }
 ```
 
-From this point on, any associated `BelongsToMany` or `MorphToMany` relationship will fire the corresponding events when using `toggle()`, `sync()`, `updateExistingPivot()`, `attach()` or `detach()`.
+From this point on, any `BelongsToMany` or `MorphToMany` relation will fire the corresponding events when using the `toggle()`, `sync()`, `updateExistingPivot()`, `attach()` or `detach()` method.
