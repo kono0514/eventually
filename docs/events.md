@@ -18,7 +18,7 @@ Event name              | Triggered by
 > **CAVEAT:** The `sync()` and `toggle()` methods trigger multiple events, since they call `attach()` and `detach()` internally. Keep that in mind when defining [listeners](https://laravel.com/docs/5.7/events#defining-listeners) or [observers](https://laravel.com/docs/5.7/eloquent#observers), to avoid surprises.
 
 ## Event listeners
-The package provides `static` methods to quickly register event listeners with the dispatcher.
+The package comes with `static` methods to quickly register event listeners with the dispatcher.
 
 These can be set in the model's `boot()` method.
 
@@ -37,43 +37,43 @@ class User extends Model
     {
         parent::boot();
     
-        static::toggling(function ($model, $relation, $data) {
+        static::toggling(function ($model, $relation, $properties) {
             // ...
         });
         
-        static::toggled(function ($model, $relation, $data) {
+        static::toggled(function ($model, $relation, $properties) {
             // ...
         });
         
-        static::syncing(function ($model, $relation, $data) {
+        static::syncing(function ($model, $relation, $properties) {
             // ...
         });
         
-        static::synced(function ($model, $relation, $data) {
+        static::synced(function ($model, $relation, $properties) {
             // ...
         });
         
-        static::updatingExistingPivot(function ($model, $relation, $data) {
+        static::updatingExistingPivot(function ($model, $relation, $properties) {
             // ...
         });
         
-        static::existingPivotUpdated(function ($model, $relation, $data) {
+        static::existingPivotUpdated(function ($model, $relation, $properties) {
             // ...
         });
         
-        static::attaching(function ($model, $relation, $data) {
+        static::attaching(function ($model, $relation, $properties) {
             // ...
         });
         
-        static::attached(function ($model, $relation, $data) {
+        static::attached(function ($model, $relation, $properties) {
             // ...
         });
         
-        static::detaching(function ($model, $relation, $data) {
+        static::detaching(function ($model, $relation, $properties) {
             // ...
         });
         
-        static::detached(function ($model, $relation, $data) {
+        static::detached(function ($model, $relation, $properties) {
             // ...
         });
     }
@@ -88,27 +88,27 @@ To cease event propagation, simply return `false` from the listener's `handle()`
 # Examples
 ```php
 // Prevent a relation from being toggled
-static::toggling(function ($model, $relation, $data) {
+static::toggling(function ($model, $relation, $properties) {
     return false;
 });
 
 // Prevent a relation from being synced
-static::syncing(function ($model, $relation, $data) {
+static::syncing(function ($model, $relation, $properties) {
     return false;
 });
 
 // Prevent a pivot from being updated
-static::updatingExistingPivot(function ($model, $relation, $data) {
+static::updatingExistingPivot(function ($model, $relation, $properties) {
     return false;
 });
 
 // Prevent a relation from being attached
-static::attaching(function ($model, $relation, $data) {
+static::attaching(function ($model, $relation, $properties) {
     return false;
 });
 
 // Prevent a relation from being detached
-static::detaching(function ($model, $relation, $data) {
+static::detaching(function ($model, $relation, $properties) {
     return false;
 });
 ```
