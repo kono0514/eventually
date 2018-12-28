@@ -11,14 +11,14 @@ use Illuminate\Support\Collection as BaseCollection;
 trait InteractsWithPivotTable
 {
     /**
-     * Get additional pivot data.
+     * Index the pivot properties.
      *
      * @param mixed $id
      * @param array $attributes
      *
      * @return array
      */
-    protected function getPivotData($id, array $attributes = []): array
+    protected function indexPivotProperties($id, array $attributes = []): array
     {
         if ($id instanceof Model) {
             return [
@@ -42,17 +42,17 @@ trait InteractsWithPivotTable
             })->all();
         }
 
-        $data = [];
+        $properties = [];
 
         foreach ((array) $id as $key => $value) {
             if (is_array($value)) {
-                $data[$key] = array_merge($attributes, $value);
+                $properties[$key] = array_merge($attributes, $value);
             } else {
-                $data[$value] = $attributes;
+                $properties[$value] = $attributes;
             }
         }
 
-        return $data;
+        return $properties;
     }
 
     /**
@@ -67,15 +67,15 @@ trait InteractsWithPivotTable
      */
     public function toggle($ids, $touch = true)
     {
-        $data = $this->getPivotData($ids);
+        $properties = $this->indexPivotProperties($ids);
 
-        if ($this->parent->firePivotEvent('toggling', true, $this->getRelationName(), $data) === false) {
+        if ($this->parent->firePivotEvent('toggling', true, $this->getRelationName(), $properties) === false) {
             return false;
         }
 
         $changes = parent::toggle($ids, $touch);
 
-        $this->parent->firePivotEvent('toggled', false, $this->getRelationName(), $data);
+        $this->parent->firePivotEvent('toggled', false, $this->getRelationName(), $properties);
 
         return $changes;
     }
@@ -90,15 +90,15 @@ trait InteractsWithPivotTable
      */
     public function sync($ids, $detaching = true)
     {
-        $data = $this->getPivotData($ids);
+        $properties = $this->indexPivotProperties($ids);
 
-        if ($this->parent->firePivotEvent('syncing', true, $this->getRelationName(), $data) === false) {
+        if ($this->parent->firePivotEvent('syncing', true, $this->getRelationName(), $properties) === false) {
             return false;
         }
 
         $changes = parent::sync($ids, $detaching);
 
-        $this->parent->firePivotEvent('synced', false, $this->getRelationName(), $data);
+        $this->parent->firePivotEvent('synced', false, $this->getRelationName(), $properties);
 
         return $changes;
     }
@@ -114,15 +114,15 @@ trait InteractsWithPivotTable
      */
     public function updateExistingPivot($id, array $attributes, $touch = true)
     {
-        $data = $this->getPivotData($id, $attributes);
+        $properties = $this->indexPivotProperties($id, $attributes);
 
-        if ($this->parent->firePivotEvent('updatingExistingPivot', true, $this->getRelationName(), $data) === false) {
+        if ($this->parent->firePivotEvent('updatingExistingPivot', true, $this->getRelationName(), $properties) === false) {
             return false;
         }
 
         $updated = parent::updateExistingPivot($id, $attributes, $touch);
 
-        $this->parent->firePivotEvent('existingPivotUpdated', false, $this->getRelationName(), $data);
+        $this->parent->firePivotEvent('existingPivotUpdated', false, $this->getRelationName(), $properties);
 
         return $updated;
     }
@@ -138,15 +138,15 @@ trait InteractsWithPivotTable
      */
     public function attach($id, array $attributes = [], $touch = true)
     {
-        $data = $this->getPivotData($id, $attributes);
+        $properties = $this->indexPivotProperties($id, $attributes);
 
-        if ($this->parent->firePivotEvent('attaching', true, $this->getRelationName(), $data) === false) {
+        if ($this->parent->firePivotEvent('attaching', true, $this->getRelationName(), $properties) === false) {
             return false;
         }
 
         parent::attach($id, $attributes, $touch);
 
-        $this->parent->firePivotEvent('attached', false, $this->getRelationName(), $data);
+        $this->parent->firePivotEvent('attached', false, $this->getRelationName(), $properties);
 
         return true;
     }
@@ -162,16 +162,16 @@ trait InteractsWithPivotTable
     public function detach($ids = null, $touch = true)
     {
         // When the first argument is null, it means that all models will be detached from
-        // the relationship, requiring the corresponding ids to be resolved
-        $data = $this->getPivotData($ids ?? $this->query->pluck($this->relatedKey)->all());
+        // the relationship, requiring the corresponding ids to be resolved for indexing
+        $properties = $this->indexPivotProperties($ids ?? $this->query->pluck($this->relatedKey)->all());
 
-        if ($this->parent->firePivotEvent('detaching', true, $this->getRelationName(), $data) === false) {
+        if ($this->parent->firePivotEvent('detaching', true, $this->getRelationName(), $properties) === false) {
             return false;
         }
 
         $results = parent::detach($ids, $touch);
 
-        $this->parent->firePivotEvent('detached', false, $this->getRelationName(), $data);
+        $this->parent->firePivotEvent('detached', false, $this->getRelationName(), $properties);
 
         return $results;
     }
