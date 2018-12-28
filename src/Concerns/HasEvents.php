@@ -54,9 +54,9 @@ trait HasEvents
         }
 
         return !empty($result) ? $result : static::$dispatcher->{$method}("eloquent.{$event}: ".static::class, [
-            'model'      => $this,
-            'relation'   => $relation,
-            'properties' => $properties,
+            $this,
+            $relation,
+            $properties,
         ]);
     }
 
