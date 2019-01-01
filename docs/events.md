@@ -14,7 +14,7 @@ Event name              | Triggered by
 `detaching`             | `detach()`, `toggle()`, `sync()`
 `detached`              | `detach()`, `toggle()`, `sync()`
 
-> **CAVEAT:** The `sync()` and `toggle()` methods trigger multiple events, since they call `attach()` and `detach()` internally. Keep that in mind when defining [listeners](https://laravel.com/docs/5.7/events#defining-listeners) or [observers](https://laravel.com/docs/5.7/eloquent#observers), to avoid surprises.
+> **CAVEAT:** The `sync()` and `toggle()` methods fire multiple events, since they call `attach()`, `detach()` and `updateExistingPivot()` internally. Keep that in mind when defining [listeners](https://laravel.com/docs/5.7/events#defining-listeners) or [observers](https://laravel.com/docs/5.7/eloquent#observers), to avoid surprises.
 
 ## Event listeners
 The package comes with `static` methods to quickly register event listeners with the dispatcher.
