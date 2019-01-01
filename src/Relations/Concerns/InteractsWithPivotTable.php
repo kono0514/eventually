@@ -21,33 +21,33 @@ trait InteractsWithPivotTable
      */
     protected function compilePivotProperties($id, array $attributes = []): array
     {
-        $default = [
+        $defaultProperties = [
             $this->foreignPivotKey => $this->parent->getKey(),
         ];
 
         if ($this instanceof MorphToMany) {
-            $default[$this->getMorphType()] = $this->getMorphClass();
+            $defaultProperties[$this->getMorphType()] = $this->getMorphClass();
         }
 
         if ($id instanceof Model) {
             return [
-                array_merge($default, $attributes, [
+                array_merge($defaultProperties, $attributes, [
                     $this->relatedPivotKey => $id->getKey(),
                 ]),
             ];
         }
 
         if ($id instanceof Collection) {
-            return $id->map(function (Model $model) use ($default, $attributes) {
-                return array_merge($default, $attributes, [
+            return $id->map(function (Model $model) use ($defaultProperties, $attributes) {
+                return array_merge($defaultProperties, $attributes, [
                     $this->relatedPivotKey => $model->getKey(),
                 ]);
             })->all();
         }
 
         if ($id instanceof BaseCollection) {
-            return $id->map(function ($item) use ($default, $attributes) {
-                return array_merge($default, $attributes, [
+            return $id->map(function ($item) use ($defaultProperties, $attributes) {
+                return array_merge($defaultProperties, $attributes, [
                     $this->relatedPivotKey => $item,
                 ]);
             })->all();
@@ -56,11 +56,15 @@ trait InteractsWithPivotTable
         $properties = [];
 
         foreach ((array) $id as $key => $value) {
-            $properties[] = is_array($value) ? array_merge($default, $attributes, $value, [
-                $this->relatedPivotKey => $key,
-            ]) : array_merge($default, $attributes, [
-                $this->relatedPivotKey => $value,
-            ]);
+            if (is_array($value)) {
+                $properties[] = array_merge($defaultProperties, $attributes, $value, [
+                    $this->relatedPivotKey => $key,
+                ]);
+            } else {
+                $properties[] = array_merge($defaultProperties, $attributes, [
+                    $this->relatedPivotKey => $value,
+                ]);
+            }
         }
 
         return $properties;
