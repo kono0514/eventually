@@ -26,7 +26,7 @@ trait InteractsWithPivotTable
         ];
 
         if ($this instanceof MorphToMany) {
-            $defaultProperties[$this->getMorphType()] = $this->getMorphClass();
+            $defaultProperties[$this->morphType] = $this->morphClass;
         }
 
         if ($id instanceof Model) {
