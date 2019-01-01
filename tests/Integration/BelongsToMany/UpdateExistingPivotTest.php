@@ -25,8 +25,14 @@ class UpdateExistingPivotTest extends EventuallyTestCase
             $this->assertSame('articles', $relation);
 
             $this->assertArraySubset([
-                1 => [],
-                2 => [],
+                [
+                    'user_id'    => 1,
+                    'article_id' => 1,
+                ],
+                [
+                    'user_id'    => 1,
+                    'article_id' => 2,
+                ],
             ], $properties, true);
         });
 
@@ -36,8 +42,14 @@ class UpdateExistingPivotTest extends EventuallyTestCase
             $this->assertSame('articles', $relation);
 
             $this->assertArraySubset([
-                1 => [],
-                2 => [],
+                [
+                    'user_id'    => 1,
+                    'article_id' => 1,
+                ],
+                [
+                    'user_id'    => 1,
+                    'article_id' => 2,
+                ],
             ], $properties, true);
         });
 
@@ -143,7 +155,10 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],
@@ -166,7 +181,11 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        2 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 2,
+                            'liked'      => false,
+                        ],
                     ],
                 ],
             ],
@@ -188,8 +207,14 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        2 => [],
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 2,
+                        ],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],
@@ -208,7 +233,10 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],
@@ -227,8 +255,14 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        1 => [],
-                        2 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 2,
+                        ],
                     ],
                 ],
             ],
@@ -247,7 +281,10 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],
@@ -269,8 +306,14 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        2 => [],
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 2,
+                        ],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],

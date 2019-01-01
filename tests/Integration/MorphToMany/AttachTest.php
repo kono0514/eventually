@@ -25,8 +25,18 @@ class AttachTest extends EventuallyTestCase
             $this->assertSame('awards', $relation);
 
             $this->assertArraySubset([
-                1 => [],
-                2 => [],
+                [
+                    'awardable_id'   => 1,
+                    'awardable_type' => User::class,
+                    'prize'          => 1024,
+                    'award_id'       => 1,
+                ],
+                [
+                    'awardable_id'   => 1,
+                    'awardable_type' => User::class,
+                    'prize'          => 1024,
+                    'award_id'       => 2,
+                ],
             ], $properties, true);
         });
 
@@ -36,8 +46,18 @@ class AttachTest extends EventuallyTestCase
             $this->assertSame('awards', $relation);
 
             $this->assertArraySubset([
-                1 => [],
-                2 => [],
+                [
+                    'awardable_id'   => 1,
+                    'awardable_type' => User::class,
+                    'prize'          => 1024,
+                    'award_id'       => 1,
+                ],
+                [
+                    'awardable_id'   => 1,
+                    'awardable_type' => User::class,
+                    'prize'          => 1024,
+                    'award_id'       => 2,
+                ],
             ], $properties, true);
         });
 
@@ -45,7 +65,9 @@ class AttachTest extends EventuallyTestCase
         $awards = factory(Award::class, 2)->create();
 
         $this->assertCount(0, $user->awards()->get());
-        $this->assertTrue($user->awards()->attach($awards));
+        $this->assertTrue($user->awards()->attach($awards, [
+            'prize' => 1024,
+        ]));
         $this->assertCount(2, $user->awards()->get());
     }
 
@@ -127,7 +149,11 @@ class AttachTest extends EventuallyTestCase
                 [
                     1 => 'awards',
                     2 => [
-                        1 => [],
+                        [
+                            'award_id'       => 1,
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                        ],
                     ],
                 ],
             ],
@@ -147,8 +173,11 @@ class AttachTest extends EventuallyTestCase
                 [
                     1 => 'awards',
                     2 => [
-                        2 => [
-                            'prize' => 1024,
+                        [
+                            'award_id'       => 2,
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'prize'          => 1024,
                         ],
                     ],
                 ],
@@ -172,11 +201,17 @@ class AttachTest extends EventuallyTestCase
                 [
                     1 => 'awards',
                     2 => [
-                        2 => [
-                            'prize' => 4096,
+                        [
+                            'award_id'       => 2,
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'prize'          => 4096,
                         ],
-                        1 => [
-                            'prize' => 8192,
+                        [
+                            'award_id'       => 1,
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'prize'          => 8192,
                         ],
                     ],
                 ],
@@ -193,7 +228,11 @@ class AttachTest extends EventuallyTestCase
                 [
                     1 => 'awards',
                     2 => [
-                        1 => [],
+                        [
+                            'award_id'       => 1,
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                        ],
                     ],
                 ],
             ],
@@ -203,14 +242,26 @@ class AttachTest extends EventuallyTestCase
                 Collection::class,
 
                 // Attributes
-                [],
+                [
+                    'prize' => 512,
+                ],
 
                 // Expected payload
                 [
                     1 => 'awards',
                     2 => [
-                        1 => [],
-                        2 => [],
+                        [
+                            'award_id'       => 1,
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'prize'          => 512,
+                        ],
+                        [
+                            'award_id'       => 2,
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'prize'          => 512,
+                        ],
                     ],
                 ],
             ],
@@ -226,7 +277,11 @@ class AttachTest extends EventuallyTestCase
                 [
                     1 => 'awards',
                     2 => [
-                        1 => [],
+                        [
+                            'award_id'       => 1,
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                        ],
                     ],
                 ],
             ],
@@ -245,8 +300,17 @@ class AttachTest extends EventuallyTestCase
                 [
                     1 => 'awards',
                     2 => [
-                        2 => [],
-                        1 => [],
+                        [
+                            'award_id'       => 2,
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+
+                        ],
+                        [
+                            'award_id'       => 1,
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                        ],
                     ],
                 ],
             ],

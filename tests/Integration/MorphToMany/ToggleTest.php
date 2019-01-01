@@ -25,7 +25,11 @@ class ToggleTest extends EventuallyTestCase
             $this->assertSame('awards', $relation);
 
             $this->assertArraySubset([
-                1 => [],
+                [
+                    'awardable_id'   => 1,
+                    'awardable_type' => User::class,
+                    'award_id'       => 1,
+                ],
             ], $properties, true);
         });
 
@@ -35,7 +39,11 @@ class ToggleTest extends EventuallyTestCase
             $this->assertSame('awards', $relation);
 
             $this->assertArraySubset([
-                1 => [],
+                [
+                    'awardable_id'   => 1,
+                    'awardable_type' => User::class,
+                    'award_id'       => 1,
+                ],
             ], $properties, true);
         });
 
@@ -135,7 +143,11 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'awards',
                     2 => [
-                        1 => [],
+                        [
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'award_id'       => 1,
+                        ],
                     ],
                 ],
             ],
@@ -158,7 +170,11 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'awards',
                     2 => [
-                        2 => [],
+                        [
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'award_id'       => 2,
+                        ],
                     ],
                 ],
             ],
@@ -183,8 +199,16 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'awards',
                     2 => [
-                        2 => [],
-                        1 => [],
+                        [
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'award_id'       => 2,
+                        ],
+                        [
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'award_id'       => 1,
+                        ],
                     ],
                 ],
             ],
@@ -205,7 +229,11 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'awards',
                     2 => [
-                        1 => [],
+                        [
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'award_id'       => 1,
+                        ],
                     ],
                 ],
             ],
@@ -227,8 +255,16 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'awards',
                     2 => [
-                        1 => [],
-                        2 => [],
+                        [
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'award_id'       => 1,
+                        ],
+                        [
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'award_id'       => 2,
+                        ],
                     ],
                 ],
             ],
@@ -249,7 +285,11 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'awards',
                     2 => [
-                        1 => [],
+                        [
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'award_id'       => 1,
+                        ],
                     ],
                 ],
             ],
@@ -274,8 +314,16 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'awards',
                     2 => [
-                        2 => [],
-                        1 => [],
+                        [
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'award_id'       => 2,
+                        ],
+                        [
+                            'awardable_id'   => 1,
+                            'awardable_type' => User::class,
+                            'award_id'       => 1,
+                        ],
                     ],
                 ],
             ],

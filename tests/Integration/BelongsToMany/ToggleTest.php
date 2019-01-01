@@ -25,7 +25,10 @@ class ToggleTest extends EventuallyTestCase
             $this->assertSame('articles', $relation);
 
             $this->assertArraySubset([
-                1 => [],
+                [
+                    'user_id'    => 1,
+                    'article_id' => 1,
+                ],
             ], $properties, true);
         });
 
@@ -35,7 +38,10 @@ class ToggleTest extends EventuallyTestCase
             $this->assertSame('articles', $relation);
 
             $this->assertArraySubset([
-                1 => [],
+                [
+                    'user_id'    => 1,
+                    'article_id' => 1,
+                ],
             ], $properties, true);
         });
 
@@ -135,7 +141,10 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],
@@ -158,7 +167,10 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        2 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 2,
+                        ],
                     ],
                 ],
             ],
@@ -183,8 +195,14 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        2 => [],
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 2,
+                        ],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],
@@ -205,7 +223,10 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],
@@ -227,8 +248,14 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        1 => [],
-                        2 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 2,
+                        ],
                     ],
                 ],
             ],
@@ -249,7 +276,10 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],
@@ -274,8 +304,14 @@ class ToggleTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        2 => [],
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 2,
+                        ],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],

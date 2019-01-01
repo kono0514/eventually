@@ -25,8 +25,14 @@ class AttachTest extends EventuallyTestCase
             $this->assertSame('articles', $relation);
 
             $this->assertArraySubset([
-                1 => [],
-                2 => [],
+                [
+                    'user_id'    => 1,
+                    'article_id' => 1,
+                ],
+                [
+                    'user_id'    => 1,
+                    'article_id' => 2,
+                ],
             ], $properties, true);
         });
 
@@ -36,8 +42,14 @@ class AttachTest extends EventuallyTestCase
             $this->assertSame('articles', $relation);
 
             $this->assertArraySubset([
-                1 => [],
-                2 => [],
+                [
+                    'user_id'    => 1,
+                    'article_id' => 1,
+                ],
+                [
+                    'user_id'    => 1,
+                    'article_id' => 2,
+                ],
             ], $properties, true);
         });
 
@@ -127,7 +139,10 @@ class AttachTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],
@@ -147,8 +162,10 @@ class AttachTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        2 => [
-                            'liked' => false,
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 2,
+                            'liked'      => false,
                         ],
                     ],
                 ],
@@ -172,10 +189,14 @@ class AttachTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        2 => [
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 2,
                             'liked' => false,
                         ],
-                        1 => [
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
                             'liked' => true,
                         ],
                     ],
@@ -193,7 +214,10 @@ class AttachTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],
@@ -209,8 +233,14 @@ class AttachTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        1 => [],
-                        2 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 2,
+                        ],
                     ],
                 ],
             ],
@@ -226,7 +256,10 @@ class AttachTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],
@@ -245,8 +278,14 @@ class AttachTest extends EventuallyTestCase
                 [
                     1 => 'articles',
                     2 => [
-                        2 => [],
-                        1 => [],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 2,
+                        ],
+                        [
+                            'user_id'    => 1,
+                            'article_id' => 1,
+                        ],
                     ],
                 ],
             ],
