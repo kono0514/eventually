@@ -29,7 +29,8 @@ class Award extends Model
      */
     public function articles(): MorphToMany
     {
-        return $this->morphedByMany(Article::class, 'awardable');
+        return $this->morphedByMany(Article::class, 'awardable')
+            ->withPivot('prize');
     }
 
     /**
@@ -37,6 +38,7 @@ class Award extends Model
      */
     public function users(): MorphToMany
     {
-        return $this->morphedByMany(User::class, 'awardable');
+        return $this->morphedByMany(User::class, 'awardable')
+            ->withPivot('prize');
     }
 }

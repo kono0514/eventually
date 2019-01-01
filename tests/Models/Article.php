@@ -60,6 +60,7 @@ class Article extends Model
      */
     public function awards(): MorphToMany
     {
-        return $this->morphToMany(Award::class, 'awardable');
+        return $this->morphToMany(Award::class, 'awardable')
+            ->withPivot('prize');
     }
 }
