@@ -7,8 +7,8 @@ Event name              | Triggered by
 `toggled`               | `toggle()`
 `syncing`               | `sync()`
 `synced`                | `sync()`
-`updatingExistingPivot` | `updateExistingPivot()`
-`existingPivotUpdated`  | `updateExistingPivot()`
+`updatingExistingPivot` | `updateExistingPivot()`, `sync()`
+`existingPivotUpdated`  | `updateExistingPivot()`, `sync()`
 `attaching`             | `attach()`, `toggle()`, `sync()`
 `attached`              | `attach()`, `toggle()`, `sync()`
 `detaching`             | `detach()`, `toggle()`, `sync()`
