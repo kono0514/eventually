@@ -192,12 +192,12 @@ class AttachTest extends EventuallyTestCase
                         [
                             'user_id'    => 1,
                             'article_id' => 2,
-                            'liked' => false,
+                            'liked'      => false,
                         ],
                         [
                             'user_id'    => 1,
                             'article_id' => 1,
-                            'liked' => true,
+                            'liked'      => true,
                         ],
                     ],
                 ],
