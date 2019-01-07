@@ -39,7 +39,7 @@ trait HasEvents
      */
     public function firePivotEvent($event, $halt = true, string $relation = null, array $properties = [])
     {
-        if (!isset(static::$dispatcher)) {
+        if (! isset(static::$dispatcher)) {
             return true;
         }
 
@@ -53,7 +53,7 @@ trait HasEvents
             return false;
         }
 
-        return !empty($result) ? $result : static::$dispatcher->{$method}("eloquent.{$event}: ".static::class, [
+        return ! empty($result) ? $result : static::$dispatcher->{$method}("eloquent.{$event}: ".static::class, [
             $this,
             $relation,
             $properties,

@@ -19,7 +19,7 @@ class FirePivotEventTest extends EventuallyTestCase
     {
         User::unsetEventDispatcher();
 
-        $user = factory(User::class)->create();
+        $user     = factory(User::class)->create();
         $articles = factory(Article::class, 2)->create();
 
         $this->assertCount(0, $user->articles()->get());
@@ -34,7 +34,7 @@ class FirePivotEventTest extends EventuallyTestCase
     {
         $articles = factory(Article::class, 2)->create();
 
-        $user = new class() extends User {
+        $user                           = new class() extends User {
             protected $dispatchesEvents = [
                 'attaching' => CustomEvent::class,
             ];

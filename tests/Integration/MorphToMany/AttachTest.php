@@ -61,7 +61,7 @@ class AttachTest extends EventuallyTestCase
             ], $properties, true);
         });
 
-        $user = factory(User::class)->create();
+        $user   = factory(User::class)->create();
         $awards = factory(Award::class, 2)->create();
 
         $this->assertCount(0, $user->awards()->get());
@@ -80,7 +80,7 @@ class AttachTest extends EventuallyTestCase
             return false;
         });
 
-        $user = factory(User::class)->create();
+        $user   = factory(User::class)->create();
         $awards = factory(Award::class, 2)->create();
 
         $this->assertCount(0, $user->awards()->get());
@@ -98,7 +98,7 @@ class AttachTest extends EventuallyTestCase
      */
     public function itSuccessfullyAttachesModels($id, array $attributes, array $expectedPayload): void
     {
-        $user = factory(User::class)->create();
+        $user   = factory(User::class)->create();
         $awards = factory(Award::class, 2)->create();
 
         $this->assertCount(0, $user->awards()->get());
