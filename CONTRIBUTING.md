@@ -20,8 +20,8 @@ Merge requests containing bug fixes or new features should always be done agains
 ## Coding Style
 This package follows the [PSR-2](https://www.php-fig.org/psr/psr-2/) coding style guide and the [PSR-4](https://www.php-fig.org/psr/psr-4/) autoloader standard.
 
-### StyleCI
-The [StyleCI](https://styleci.io) service is hooked into our CI pipeline, so you'll be notified of any styling issues while pushing code.
+### PHP Coding Standards Fixer
+A [PHP CS Fixer](https://cs.symfony.com/) script is hooked into our CI pipeline, so you'll be notified of any coding standard issues while pushing code.
 
 ### PHPDoc
 The following is a valid documentation block example:
