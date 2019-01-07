@@ -1,5 +1,6 @@
 .idea
-/coverage
-/vendor
+.php_cs.cache
+coverage
+vendor
 composer.lock
 phpunit.xml
