@@ -18,8 +18,6 @@ before_script:
   - php composer.phar install --no-interaction
 
   # Check coding style
-  - php composer.phar cs-check config
-  - php composer.phar cs-check database
   - php composer.phar cs-check src
   - php composer.phar cs-check tests
 
