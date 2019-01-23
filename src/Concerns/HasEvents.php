@@ -13,7 +13,7 @@ trait HasEvents
      */
     public function getObservableEvents(): array
     {
-        return array_merge(parent::getObservableEvents(), [
+        return \array_merge(parent::getObservableEvents(), [
             'toggling',
             'toggled',
             'syncing',

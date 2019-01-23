@@ -124,7 +124,7 @@ class DetachTest extends EventuallyTestCase
 
         $this->assertCount(2 - $results, $user->awards()->get());
 
-        Event::assertDispatched(sprintf('eloquent.detaching: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
+        Event::assertDispatched(\sprintf('eloquent.detaching: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
             $this->assertArraySubset($expectedPayload, $payload, true);
 
             $this->assertTrue($halt);
@@ -132,7 +132,7 @@ class DetachTest extends EventuallyTestCase
             return true;
         });
 
-        Event::assertDispatched(sprintf('eloquent.detached: %s', User::class), function ($event, $payload) use ($expectedPayload) {
+        Event::assertDispatched(\sprintf('eloquent.detached: %s', User::class), function ($event, $payload) use ($expectedPayload) {
             $this->assertArraySubset($expectedPayload, $payload, true);
 
             return true;

@@ -107,7 +107,7 @@ class AttachTest extends EventuallyTestCase
 
         $this->assertTrue($user->articles()->attach($id, $attributes));
 
-        Event::assertDispatched(sprintf('eloquent.attaching: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
+        Event::assertDispatched(\sprintf('eloquent.attaching: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
             $this->assertArraySubset($expectedPayload, $payload, true);
 
             $this->assertTrue($halt);
@@ -115,7 +115,7 @@ class AttachTest extends EventuallyTestCase
             return true;
         });
 
-        Event::assertDispatched(sprintf('eloquent.attached: %s', User::class), function ($event, $payload) use ($expectedPayload) {
+        Event::assertDispatched(\sprintf('eloquent.attached: %s', User::class), function ($event, $payload) use ($expectedPayload) {
             $this->assertArraySubset($expectedPayload, $payload, true);
 
             return true;

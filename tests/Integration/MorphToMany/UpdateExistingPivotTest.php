@@ -127,7 +127,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
         $this->assertSame($results, $user->awards()->updateExistingPivot($id, $attributes));
 
-        Event::assertDispatched(sprintf('eloquent.updatingExistingPivot: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
+        Event::assertDispatched(\sprintf('eloquent.updatingExistingPivot: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
             $this->assertArraySubset($expectedPayload, $payload, true);
 
             $this->assertTrue($halt);
@@ -135,7 +135,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
             return true;
         });
 
-        Event::assertDispatched(sprintf('eloquent.existingPivotUpdated: %s', User::class), function ($event, $payload) use ($expectedPayload) {
+        Event::assertDispatched(\sprintf('eloquent.existingPivotUpdated: %s', User::class), function ($event, $payload) use ($expectedPayload) {
             $this->assertArraySubset($expectedPayload, $payload, true);
 
             return true;

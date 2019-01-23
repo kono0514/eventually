@@ -106,7 +106,7 @@ class SyncTest extends EventuallyTestCase
 
         $this->assertArraySubset($results, $user->articles()->sync($id, $attributes), true);
 
-        Event::assertDispatched(sprintf('eloquent.syncing: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
+        Event::assertDispatched(\sprintf('eloquent.syncing: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
             $this->assertArraySubset($expectedPayload, $payload, true);
 
             $this->assertTrue($halt);
@@ -114,7 +114,7 @@ class SyncTest extends EventuallyTestCase
             return true;
         });
 
-        Event::assertDispatched(sprintf('eloquent.synced: %s', User::class), function ($event, $payload) use ($expectedPayload) {
+        Event::assertDispatched(\sprintf('eloquent.synced: %s', User::class), function ($event, $payload) use ($expectedPayload) {
             $this->assertArraySubset($expectedPayload, $payload, true);
 
             return true;

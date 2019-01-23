@@ -31,7 +31,7 @@ trait InteractsWithPivotTable
 
         if ($id instanceof Model) {
             return [
-                array_merge($defaultProperties, $attributes, [
+                \array_merge($defaultProperties, $attributes, [
                     $this->relatedPivotKey => $id->getKey(),
                 ]),
             ];
@@ -39,7 +39,7 @@ trait InteractsWithPivotTable
 
         if ($id instanceof Collection) {
             return $id->map(function (Model $model) use ($defaultProperties, $attributes) {
-                return array_merge($defaultProperties, $attributes, [
+                return \array_merge($defaultProperties, $attributes, [
                     $this->relatedPivotKey => $model->getKey(),
                 ]);
             })->all();
@@ -47,7 +47,7 @@ trait InteractsWithPivotTable
 
         if ($id instanceof BaseCollection) {
             return $id->map(function ($item) use ($defaultProperties, $attributes) {
-                return array_merge($defaultProperties, $attributes, [
+                return \array_merge($defaultProperties, $attributes, [
                     $this->relatedPivotKey => $item,
                 ]);
             })->all();
@@ -56,12 +56,12 @@ trait InteractsWithPivotTable
         $properties = [];
 
         foreach ((array) $id as $key => $value) {
-            if (is_array($value)) {
-                $properties[] = array_merge($defaultProperties, $attributes, $value, [
+            if (\is_array($value)) {
+                $properties[] = \array_merge($defaultProperties, $attributes, $value, [
                     $this->relatedPivotKey => $key,
                 ]);
             } else {
-                $properties[] = array_merge($defaultProperties, $attributes, [
+                $properties[] = \array_merge($defaultProperties, $attributes, [
                     $this->relatedPivotKey => $value,
                 ]);
             }
