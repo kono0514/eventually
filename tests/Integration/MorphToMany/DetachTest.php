@@ -159,12 +159,12 @@ class DetachTest extends EventuallyTestCase
                         [
                             'awardable_id'   => 1,
                             'awardable_type' => User::class,
-                            'award_id'       => 1,
+                            'award_id'       => '1',
                         ],
                         [
                             'awardable_id'   => 1,
                             'awardable_type' => User::class,
-                            'award_id'       => 2,
+                            'award_id'       => '2',
                         ],
                     ],
                 ],
