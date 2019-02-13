@@ -17,6 +17,9 @@ For information on recent changes, check the [CHANGELOG](CHANGELOG.md).
 ## Contributing
 Contributions are always welcome, but before anything else, make sure you get acquainted with the [CONTRIBUTING](CONTRIBUTING.md) guide.
 
+### Security
+If you find a security related issue, please email security@altek.org instead of using the issue tracker.
+
 ## Credits
 - [Quetzy Garcia](https://gitlab.com/quetzyg)
 
