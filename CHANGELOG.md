@@ -1,4 +1,9 @@
 # Changelog
+Relevant changes to the Eventually package will be documented here.
+
+## v1.0.3 (2019-02-13)
+## Fixed
+- Use the correct foreign/related pivot key values
 
 ## v1.0.2 (2019-02-05)
 ### Added
