@@ -22,7 +22,7 @@ trait InteractsWithPivotTable
     protected function compilePivotProperties($id, array $attributes = []): array
     {
         $defaultProperties = [
-            $this->foreignPivotKey => $this->parent->getKey(),
+            $this->foreignPivotKey => $this->parent->getAttribute($this->parentKey),
         ];
 
         if ($this instanceof MorphToMany) {
@@ -32,7 +32,7 @@ trait InteractsWithPivotTable
         if ($id instanceof Model) {
             return [
                 \array_merge($defaultProperties, $attributes, [
-                    $this->relatedPivotKey => $id->getKey(),
+                    $this->relatedPivotKey => $id->getAttribute($this->relatedKey),
                 ]),
             ];
         }
@@ -40,7 +40,7 @@ trait InteractsWithPivotTable
         if ($id instanceof Collection) {
             return $id->map(function (Model $model) use ($defaultProperties, $attributes) {
                 return \array_merge($defaultProperties, $attributes, [
-                    $this->relatedPivotKey => $model->getKey(),
+                    $this->relatedPivotKey => $model->getAttribute($this->relatedKey),
                 ]);
             })->all();
         }
