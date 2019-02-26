@@ -1,5 +1,5 @@
 # Events
-As with regular Eloquent [events](https://laravel.com/docs/5.7/eloquent#events), this package allows you to hook into a pivot's lifecycle by subscribing and listening for specific events.
+As with regular Eloquent [events](https://laravel.com/docs/5.8/eloquent#events), this package allows you to hook into a pivot's lifecycle by subscribing and listening for specific events.
 
 Event name              | Triggered by
 ------------------------|------------------------------------------
@@ -14,7 +14,7 @@ Event name              | Triggered by
 `detaching`             | `detach()`, `toggle()`, `sync()`
 `detached`              | `detach()`, `toggle()`, `sync()`
 
-> **CAVEAT:** The `sync()` and `toggle()` methods fire multiple events, since they call `attach()`, `detach()` and `updateExistingPivot()` internally. Keep that in mind when defining [listeners](https://laravel.com/docs/5.7/events#defining-listeners) or [observers](https://laravel.com/docs/5.7/eloquent#observers), to avoid surprises.
+> **CAVEAT:** The `sync()` and `toggle()` methods fire multiple events, since they call `attach()`, `detach()` and `updateExistingPivot()` internally. Keep that in mind when defining [listeners](https://laravel.com/docs/5.8/events#defining-listeners) or [observers](https://laravel.com/docs/5.8/eloquent#observers), to avoid surprises.
 
 ## Event listeners
 The package comes with `static` methods to quickly register event listeners with the dispatcher.
@@ -79,7 +79,7 @@ class User extends Model
 }
 ```
 
-Alternatively, the same can be achieved with the `Event::listen()` method, an [Observer](https://laravel.com/docs/5.7/eloquent#observers) or an [Event Listener](https://laravel.com/docs/5.7/events#defining-listeners).
+Alternatively, the same can be achieved with the `Event::listen()` method, an [Observer](https://laravel.com/docs/5.8/eloquent#observers) or an [Event Listener](https://laravel.com/docs/5.8/events#defining-listeners).
 
 ## Halting event propagation
 To cease the event propagation, simply return `false` from the listener's handling method/function.
@@ -114,4 +114,4 @@ static::detaching(function ($model, $relation, $properties) {
 });
 ```
 
-> **TIP:** For more information on this subject, please refer to the [official documentation](https://laravel.com/docs/5.7/events).
+> **TIP:** For more information on this subject, please refer to the [official documentation](https://laravel.com/docs/5.8/events).
