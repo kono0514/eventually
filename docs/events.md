@@ -14,7 +14,9 @@ Event name              | Triggered by
 `detaching`             | `detach()`, `toggle()`, `sync()`
 `detached`              | `detach()`, `toggle()`, `sync()`
 
-> **CAVEAT:** The `sync()` and `toggle()` methods fire multiple events, since they call `attach()`, `detach()` and `updateExistingPivot()` internally. Keep that in mind when defining [listeners](https://laravel.com/docs/5.8/events#defining-listeners) or [observers](https://laravel.com/docs/5.8/eloquent#observers), to avoid surprises.
+::: danger CAVEAT
+The `sync()` and `toggle()` methods fire multiple events, since they call `attach()`, `detach()` and `updateExistingPivot()` internally. Keep that in mind when defining [listeners](https://laravel.com/docs/5.8/events#defining-listeners) or [observers](https://laravel.com/docs/5.8/eloquent#observers), to avoid surprises.
+:::
 
 ## Event listeners
 The package comes with `static` methods to quickly register event listeners with the dispatcher.
@@ -114,4 +116,6 @@ static::detaching(function ($model, $relation, $properties) {
 });
 ```
 
-> **TIP:** For more information on this subject, please refer to the [official documentation](https://laravel.com/docs/5.8/events).
+::: tip
+For more information on this subject, please refer to the [official documentation](https://laravel.com/docs/5.8/events).
+:::

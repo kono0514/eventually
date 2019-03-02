@@ -7,7 +7,9 @@ The following command will install the latest available version:
 composer require altek/eventually
 ```
 
-> **NOTICE:** This package supports [illuminate/database](https://packagist.org/packages/illuminate/database) from version **5.5** onward.
+::: warning NOTICE
+This package supports [illuminate/database](https://packagist.org/packages/illuminate/database) from version **5.5** onward.
+:::
 
 # Model setup
 By using the `Altek\Eventually\Eventually` trait on an Eloquent model, the new pivot events become available.
