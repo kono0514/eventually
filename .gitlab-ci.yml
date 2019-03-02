@@ -38,3 +38,21 @@ test:7.2:
 test:7.3:
   image: php:7.3
   <<: *test_definition
+
+pages:
+  image: node:9.11.1
+
+  cache:
+    paths:
+      - node_modules/
+
+  script:
+    - yarn install
+    - yarn build
+
+  artifacts:
+    paths:
+      - public
+
+  only:
+    - master
