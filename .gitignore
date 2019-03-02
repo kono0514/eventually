@@ -1,6 +1,9 @@
-.idea
+/.idea
+/coverage
+/node_modules
+/public
+/vendor
 .php_cs.cache
-coverage
-vendor
 composer.lock
 phpunit.xml
+yarn.lock
