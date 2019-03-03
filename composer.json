@@ -16,7 +16,7 @@
         "toggle",
         "update"
     ],
-    "homepage": "https://packagist.org/packages/altek/eventually",
+    "homepage": "https://altek.gitlab.io/eventually",
     "type": "package",
     "license": "MIT",
     "support": {
