@@ -24,7 +24,7 @@ class AttachTest extends EventuallyTestCase
 
             $this->assertSame('articles', $relation);
 
-            $this->assertArraySubset([
+            $this->assertSame([
                 [
                     'user_id'    => 1,
                     'article_id' => 1,
@@ -33,7 +33,7 @@ class AttachTest extends EventuallyTestCase
                     'user_id'    => 1,
                     'article_id' => 2,
                 ],
-            ], $properties, true);
+            ], $properties);
         });
 
         User::attached(function ($user, $relation, $properties) {
@@ -41,7 +41,7 @@ class AttachTest extends EventuallyTestCase
 
             $this->assertSame('articles', $relation);
 
-            $this->assertArraySubset([
+            $this->assertSame([
                 [
                     'user_id'    => 1,
                     'article_id' => 1,
@@ -50,14 +50,16 @@ class AttachTest extends EventuallyTestCase
                     'user_id'    => 1,
                     'article_id' => 2,
                 ],
-            ], $properties, true);
+            ], $properties);
         });
 
         $user     = factory(User::class)->create();
         $articles = factory(Article::class, 2)->create();
 
         $this->assertCount(0, $user->articles()->get());
+
         $this->assertTrue($user->articles()->attach($articles));
+
         $this->assertCount(2, $user->articles()->get());
     }
 
@@ -74,7 +76,9 @@ class AttachTest extends EventuallyTestCase
         $articles = factory(Article::class, 2)->create();
 
         $this->assertCount(0, $user->articles()->get());
+
         $this->assertFalse($user->articles()->attach($articles));
+
         $this->assertCount(0, $user->articles()->get());
     }
 
@@ -108,7 +112,11 @@ class AttachTest extends EventuallyTestCase
         $this->assertTrue($user->articles()->attach($id, $attributes));
 
         Event::assertDispatched(\sprintf('eloquent.attaching: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
-            $this->assertArraySubset($expectedPayload, $payload, true);
+            $this->assertInstanceOf(User::class, $payload[0]);
+
+            unset($payload[0]);
+
+            $this->assertSame($expectedPayload, $payload);
 
             $this->assertTrue($halt);
 
@@ -116,7 +124,11 @@ class AttachTest extends EventuallyTestCase
         });
 
         Event::assertDispatched(\sprintf('eloquent.attached: %s', User::class), function ($event, $payload) use ($expectedPayload) {
-            $this->assertArraySubset($expectedPayload, $payload, true);
+            $this->assertInstanceOf(User::class, $payload[0]);
+
+            unset($payload[0]);
+
+            $this->assertSame($expectedPayload, $payload);
 
             return true;
         });
@@ -164,8 +176,8 @@ class AttachTest extends EventuallyTestCase
                     2 => [
                         [
                             'user_id'    => 1,
-                            'article_id' => 2,
                             'liked'      => false,
+                            'article_id' => 2,
                         ],
                     ],
                 ],
@@ -191,13 +203,13 @@ class AttachTest extends EventuallyTestCase
                     2 => [
                         [
                             'user_id'    => 1,
-                            'article_id' => 2,
                             'liked'      => false,
+                            'article_id' => 2,
                         ],
                         [
                             'user_id'    => 1,
-                            'article_id' => 1,
                             'liked'      => true,
+                            'article_id' => 1,
                         ],
                     ],
                 ],

@@ -23,7 +23,9 @@ class FirePivotEventTest extends EventuallyTestCase
         $articles = factory(Article::class, 2)->create();
 
         $this->assertCount(0, $user->articles()->get());
+
         $this->assertTrue($user->articles()->attach($articles));
+
         $this->assertCount(2, $user->articles()->get());
     }
 

@@ -24,7 +24,7 @@ class DetachTest extends EventuallyTestCase
 
             $this->assertSame('awards', $relation);
 
-            $this->assertArraySubset([
+            $this->assertSame([
                 [
                     'awardable_id'   => 1,
                     'awardable_type' => User::class,
@@ -35,7 +35,7 @@ class DetachTest extends EventuallyTestCase
                     'awardable_type' => User::class,
                     'award_id'       => 2,
                 ],
-            ], $properties, true);
+            ], $properties);
         });
 
         User::detached(function ($user, $relation, $properties) {
@@ -43,7 +43,7 @@ class DetachTest extends EventuallyTestCase
 
             $this->assertSame('awards', $relation);
 
-            $this->assertArraySubset([
+            $this->assertSame([
                 [
                     'awardable_id'   => 1,
                     'awardable_type' => User::class,
@@ -54,7 +54,7 @@ class DetachTest extends EventuallyTestCase
                     'awardable_type' => User::class,
                     'award_id'       => 2,
                 ],
-            ], $properties, true);
+            ], $properties);
         });
 
         $user = factory(User::class)->create();
@@ -64,7 +64,9 @@ class DetachTest extends EventuallyTestCase
         });
 
         $this->assertCount(2, $user->awards()->get());
+
         $this->assertSame(2, $user->awards()->detach($awards));
+
         $this->assertCount(0, $user->awards()->get());
     }
 
@@ -84,7 +86,9 @@ class DetachTest extends EventuallyTestCase
         });
 
         $this->assertCount(2, $user->awards()->get());
+
         $this->assertFalse($user->awards()->detach($awards));
+
         $this->assertCount(2, $user->awards()->get());
     }
 
@@ -125,7 +129,11 @@ class DetachTest extends EventuallyTestCase
         $this->assertCount(2 - $results, $user->awards()->get());
 
         Event::assertDispatched(\sprintf('eloquent.detaching: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
-            $this->assertArraySubset($expectedPayload, $payload, true);
+            $this->assertInstanceOf(User::class, $payload[0]);
+
+            unset($payload[0]);
+
+            $this->assertSame($expectedPayload, $payload);
 
             $this->assertTrue($halt);
 
@@ -133,7 +141,11 @@ class DetachTest extends EventuallyTestCase
         });
 
         Event::assertDispatched(\sprintf('eloquent.detached: %s', User::class), function ($event, $payload) use ($expectedPayload) {
-            $this->assertArraySubset($expectedPayload, $payload, true);
+            $this->assertInstanceOf(User::class, $payload[0]);
+
+            unset($payload[0]);
+
+            $this->assertSame($expectedPayload, $payload);
 
             return true;
         });

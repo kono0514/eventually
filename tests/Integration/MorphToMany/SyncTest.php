@@ -24,13 +24,13 @@ class SyncTest extends EventuallyTestCase
 
             $this->assertSame('awards', $relation);
 
-            $this->assertArraySubset([
+            $this->assertSame([
                 [
                     'awardable_id'   => 1,
                     'awardable_type' => User::class,
                     'award_id'       => 1,
                 ],
-            ], $properties, true);
+            ], $properties);
         });
 
         User::synced(function ($user, $relation, $properties) {
@@ -38,26 +38,28 @@ class SyncTest extends EventuallyTestCase
 
             $this->assertSame('awards', $relation);
 
-            $this->assertArraySubset([
+            $this->assertSame([
                 [
                     'awardable_id'   => 1,
                     'awardable_type' => User::class,
                     'award_id'       => 1,
                 ],
-            ], $properties, true);
+            ], $properties);
         });
 
         $user  = factory(User::class)->create();
         $award = factory(Award::class)->create();
 
         $this->assertCount(0, $user->awards()->get());
-        $this->assertArraySubset([
+
+        $this->assertSame([
             'attached' => [
                 1,
             ],
             'detached' => [],
             'updated'  => [],
-        ], $user->awards()->sync($award), true);
+        ], $user->awards()->sync($award));
+
         $this->assertCount(1, $user->awards()->get());
     }
 
@@ -74,7 +76,9 @@ class SyncTest extends EventuallyTestCase
         $awards = factory(Award::class, 2)->create();
 
         $this->assertCount(0, $user->awards()->get());
+
         $this->assertFalse($user->awards()->sync($awards));
+
         $this->assertCount(0, $user->awards()->get());
     }
 
@@ -106,10 +110,14 @@ class SyncTest extends EventuallyTestCase
                 break;
         }
 
-        $this->assertArraySubset($results, $user->awards()->sync($id, $attributes), true);
+        $this->assertSame($results, $user->awards()->sync($id, $attributes));
 
         Event::assertDispatched(\sprintf('eloquent.syncing: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
-            $this->assertArraySubset($expectedPayload, $payload, true);
+            $this->assertInstanceOf(User::class, $payload[0]);
+
+            unset($payload[0]);
+
+            $this->assertSame($expectedPayload, $payload);
 
             $this->assertTrue($halt);
 
@@ -117,7 +125,11 @@ class SyncTest extends EventuallyTestCase
         });
 
         Event::assertDispatched(\sprintf('eloquent.synced: %s', User::class), function ($event, $payload) use ($expectedPayload) {
-            $this->assertArraySubset($expectedPayload, $payload, true);
+            $this->assertInstanceOf(User::class, $payload[0]);
+
+            unset($payload[0]);
+
+            $this->assertSame($expectedPayload, $payload);
 
             return true;
         });
@@ -222,14 +234,14 @@ class SyncTest extends EventuallyTestCase
                         [
                             'awardable_id'   => 1,
                             'awardable_type' => User::class,
-                            'award_id'       => 2,
                             'prize'          => 2048,
+                            'award_id'       => 2,
                         ],
                         [
                             'awardable_id'   => 1,
                             'awardable_type' => User::class,
-                            'award_id'       => 1,
                             'prize'          => 512,
+                            'award_id'       => 1,
                         ],
                     ],
                 ],

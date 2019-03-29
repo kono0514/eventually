@@ -24,13 +24,13 @@ class ToggleTest extends EventuallyTestCase
 
             $this->assertSame('awards', $relation);
 
-            $this->assertArraySubset([
+            $this->assertSame([
                 [
                     'awardable_id'   => 1,
                     'awardable_type' => User::class,
                     'award_id'       => 1,
                 ],
-            ], $properties, true);
+            ], $properties);
         });
 
         User::toggled(function ($user, $relation, $properties) {
@@ -38,25 +38,27 @@ class ToggleTest extends EventuallyTestCase
 
             $this->assertSame('awards', $relation);
 
-            $this->assertArraySubset([
+            $this->assertSame([
                 [
                     'awardable_id'   => 1,
                     'awardable_type' => User::class,
                     'award_id'       => 1,
                 ],
-            ], $properties, true);
+            ], $properties);
         });
 
         $user  = factory(User::class)->create();
         $award = factory(Award::class)->create();
 
         $this->assertCount(0, $user->awards()->get());
-        $this->assertArraySubset([
+
+        $this->assertSame([
             'attached' => [
                 1,
             ],
             'detached' => [],
-        ], $user->awards()->toggle($award), true);
+        ], $user->awards()->toggle($award));
+
         $this->assertCount(1, $user->awards()->get());
     }
 
@@ -73,7 +75,9 @@ class ToggleTest extends EventuallyTestCase
         $awards = factory(Award::class, 2)->create();
 
         $this->assertCount(0, $user->awards()->get());
+
         $this->assertFalse($user->awards()->toggle($awards));
+
         $this->assertCount(0, $user->awards()->get());
     }
 
@@ -104,10 +108,14 @@ class ToggleTest extends EventuallyTestCase
                 break;
         }
 
-        $this->assertArraySubset($results, $user->awards()->toggle($id), true);
+        $this->assertSame($results, $user->awards()->toggle($id));
 
         Event::assertDispatched(\sprintf('eloquent.toggling: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
-            $this->assertArraySubset($expectedPayload, $payload, true);
+            $this->assertInstanceOf(User::class, $payload[0]);
+
+            unset($payload[0]);
+
+            $this->assertSame($expectedPayload, $payload);
 
             $this->assertTrue($halt);
 
@@ -115,7 +123,11 @@ class ToggleTest extends EventuallyTestCase
         });
 
         Event::assertDispatched(\sprintf('eloquent.toggled: %s', User::class), function ($event, $payload) use ($expectedPayload) {
-            $this->assertArraySubset($expectedPayload, $payload, true);
+            $this->assertInstanceOf(User::class, $payload[0]);
+
+            unset($payload[0]);
+
+            $this->assertSame($expectedPayload, $payload);
 
             return true;
         });

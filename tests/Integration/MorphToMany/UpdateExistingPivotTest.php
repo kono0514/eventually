@@ -23,20 +23,20 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
             $this->assertSame('awards', $relation);
 
-            $this->assertArraySubset([
+            $this->assertSame([
                 [
                     'awardable_id'   => 1,
                     'awardable_type' => User::class,
+                    'prize'          => 4096,
                     'award_id'       => 1,
-                    'prize'          => 4096,
                 ],
                 [
                     'awardable_id'   => 1,
                     'awardable_type' => User::class,
-                    'award_id'       => 2,
                     'prize'          => 4096,
+                    'award_id'       => 2,
                 ],
-            ], $properties, true);
+            ], $properties);
         });
 
         User::existingPivotUpdated(function ($user, $relation, $properties) {
@@ -44,20 +44,20 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
             $this->assertSame('awards', $relation);
 
-            $this->assertArraySubset([
+            $this->assertSame([
                 [
                     'awardable_id'   => 1,
                     'awardable_type' => User::class,
+                    'prize'          => 4096,
                     'award_id'       => 1,
-                    'prize'          => 4096,
                 ],
                 [
                     'awardable_id'   => 1,
                     'awardable_type' => User::class,
-                    'award_id'       => 2,
                     'prize'          => 4096,
+                    'award_id'       => 2,
                 ],
-            ], $properties, true);
+            ], $properties);
         });
 
         $user = factory(User::class)->create();
@@ -67,6 +67,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
         });
 
         $this->assertCount(2, $user->awards()->get());
+
         $this->assertSame(2, $user->awards()->updateExistingPivot($awards, [
             'prize' => 4096,
         ]));
@@ -88,9 +89,11 @@ class UpdateExistingPivotTest extends EventuallyTestCase
         });
 
         $this->assertCount(2, $user->awards()->get());
+
         $this->assertFalse($user->awards()->updateExistingPivot($awards, [
             'prize' => 256,
         ]));
+
         $this->assertCount(2, $user->awards()->get());
     }
 
@@ -128,7 +131,11 @@ class UpdateExistingPivotTest extends EventuallyTestCase
         $this->assertSame($results, $user->awards()->updateExistingPivot($id, $attributes));
 
         Event::assertDispatched(\sprintf('eloquent.updatingExistingPivot: %s', User::class), function ($event, $payload, $halt) use ($expectedPayload) {
-            $this->assertArraySubset($expectedPayload, $payload, true);
+            $this->assertInstanceOf(User::class, $payload[0]);
+
+            unset($payload[0]);
+
+            $this->assertSame($expectedPayload, $payload);
 
             $this->assertTrue($halt);
 
@@ -136,7 +143,11 @@ class UpdateExistingPivotTest extends EventuallyTestCase
         });
 
         Event::assertDispatched(\sprintf('eloquent.existingPivotUpdated: %s', User::class), function ($event, $payload) use ($expectedPayload) {
-            $this->assertArraySubset($expectedPayload, $payload, true);
+            $this->assertInstanceOf(User::class, $payload[0]);
+
+            unset($payload[0]);
+
+            $this->assertSame($expectedPayload, $payload);
 
             return true;
         });
@@ -167,8 +178,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                         [
                             'awardable_id'   => 1,
                             'awardable_type' => User::class,
-                            'award_id'       => 1,
                             'prize'          => 128,
+                            'award_id'       => 1,
                         ],
                     ],
                 ],
@@ -195,8 +206,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                         [
                             'awardable_id'   => 1,
                             'awardable_type' => User::class,
-                            'award_id'       => 2,
                             'prize'          => 1024,
+                            'award_id'       => 2,
                         ],
                     ],
                 ],
@@ -224,14 +235,14 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                         [
                             'awardable_id'   => 1,
                             'awardable_type' => User::class,
-                            'award_id'       => 2,
                             'prize'          => 32768,
+                            'award_id'       => 2,
                         ],
                         [
                             'awardable_id'   => 1,
                             'awardable_type' => User::class,
-                            'award_id'       => 1,
                             'prize'          => 32768,
+                            'award_id'       => 1,
                         ],
                     ],
                 ],
@@ -256,8 +267,8 @@ class UpdateExistingPivotTest extends EventuallyTestCase
                         [
                             'awardable_id'   => 1,
                             'awardable_type' => User::class,
-                            'award_id'       => 1,
                             'prize'          => 16384,
+                            'award_id'       => 1,
                         ],
                     ],
                 ],
