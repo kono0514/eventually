@@ -1,6 +1,10 @@
 # Changelog
 Relevant changes to the Eventually package will be documented here.
 
+## v1.0.5 (2019-09-03)
+### Added
+- Support `illuminate/database` v6.0
+
 ## v1.0.4 (2019-02-26)
 ### Added
 - Support `illuminate/database` v5.8
