@@ -19,7 +19,7 @@ class ToggleTest extends EventuallyTestCase
      */
     public function itSuccessfullyRegistersEventListeners(): void
     {
-        User::toggling(function ($user, $relation, $properties) {
+        User::toggling(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -32,7 +32,7 @@ class ToggleTest extends EventuallyTestCase
             ], $properties);
         });
 
-        User::toggled(function ($user, $relation, $properties) {
+        User::toggled(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -65,7 +65,7 @@ class ToggleTest extends EventuallyTestCase
      */
     public function itPreventsModelsFromBeingToggled(): void
     {
-        User::toggling(function () {
+        User::toggling(static function () {
             return false;
         });
 

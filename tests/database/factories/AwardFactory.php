@@ -12,7 +12,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Award::class, function (Faker $faker) {
+$factory->define(Award::class, static function (Faker $faker) {
     return [
         'name' => $faker->unique()->sentence(2),
     ];

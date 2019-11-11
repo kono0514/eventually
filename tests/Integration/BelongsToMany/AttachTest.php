@@ -19,7 +19,7 @@ class AttachTest extends EventuallyTestCase
      */
     public function itSuccessfullyRegistersEventListeners(): void
     {
-        User::attaching(function ($user, $relation, $properties) {
+        User::attaching(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -36,7 +36,7 @@ class AttachTest extends EventuallyTestCase
             ], $properties);
         });
 
-        User::attached(function ($user, $relation, $properties) {
+        User::attached(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -68,7 +68,7 @@ class AttachTest extends EventuallyTestCase
      */
     public function itPreventsModelsFromBeingAttached(): void
     {
-        User::attaching(function () {
+        User::attaching(static function () {
             return false;
         });
 

@@ -19,7 +19,7 @@ class DetachTest extends EventuallyTestCase
      */
     public function itSuccessfullyRegistersEventListeners(): void
     {
-        User::detaching(function ($user, $relation, $properties) {
+        User::detaching(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('awards', $relation);
@@ -38,7 +38,7 @@ class DetachTest extends EventuallyTestCase
             ], $properties);
         });
 
-        User::detached(function ($user, $relation, $properties) {
+        User::detached(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('awards', $relation);
@@ -59,7 +59,7 @@ class DetachTest extends EventuallyTestCase
 
         $user = factory(User::class)->create();
 
-        $awards = factory(Award::class, 2)->create()->each(function (Award $award) use ($user) {
+        $awards = factory(Award::class, 2)->create()->each(static function (Award $award) use ($user): void {
             $award->users()->attach($user);
         });
 
@@ -75,13 +75,13 @@ class DetachTest extends EventuallyTestCase
      */
     public function itPreventsModelsFromBeingDetached(): void
     {
-        User::detaching(function () {
+        User::detaching(static function () {
             return false;
         });
 
         $user = factory(User::class)->create();
 
-        $awards = factory(Award::class, 2)->create()->each(function (Award $award) use ($user) {
+        $awards = factory(Award::class, 2)->create()->each(static function (Award $award) use ($user): void {
             $award->users()->attach($user);
         });
 
@@ -104,7 +104,7 @@ class DetachTest extends EventuallyTestCase
     {
         $user = factory(User::class)->create();
 
-        $awards = factory(Award::class, 2)->create()->each(function (Award $award) use ($user) {
+        $awards = factory(Award::class, 2)->create()->each(static function (Award $award) use ($user): void {
             $award->users()->attach($user, [
                 'prize' => 8192,
             ]);

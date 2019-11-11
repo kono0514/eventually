@@ -12,7 +12,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Article::class, function (Faker $faker) {
+$factory->define(Article::class, static function (Faker $faker) {
     return [
         'title'        => $faker->unique()->sentence,
         'content'      => $faker->unique()->paragraph(6),

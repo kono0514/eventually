@@ -19,7 +19,7 @@ class SyncTest extends EventuallyTestCase
      */
     public function itSuccessfullyRegistersEventListeners(): void
     {
-        User::syncing(function ($user, $relation, $properties) {
+        User::syncing(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('awards', $relation);
@@ -33,7 +33,7 @@ class SyncTest extends EventuallyTestCase
             ], $properties);
         });
 
-        User::synced(function ($user, $relation, $properties) {
+        User::synced(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('awards', $relation);
@@ -68,7 +68,7 @@ class SyncTest extends EventuallyTestCase
      */
     public function itPreventsModelsFromBeingSynced(): void
     {
-        User::syncing(function () {
+        User::syncing(static function () {
             return false;
         });
 

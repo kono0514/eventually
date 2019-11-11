@@ -15,7 +15,7 @@ class CreateArticleUserTestTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('article_user', function (Blueprint $table) {
+        Schema::create('article_user', static function (Blueprint $table): void {
             $table->unsignedInteger('article_id');
             $table->unsignedInteger('user_id');
             $table->boolean('liked')->nullable();

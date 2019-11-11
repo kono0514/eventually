@@ -15,7 +15,7 @@ class CreateUsersTestTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('users', static function (Blueprint $table): void {
             $table->increments('id');
             $table->boolean('is_admin');
             $table->string('first_name');

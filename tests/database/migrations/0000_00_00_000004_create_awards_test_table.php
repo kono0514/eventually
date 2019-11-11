@@ -15,7 +15,7 @@ class CreateAwardsTestTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('awards', function (Blueprint $table) {
+        Schema::create('awards', static function (Blueprint $table): void {
             $table->increments('id');
             $table->string('name')->unique();
             $table->timestamps();

@@ -15,7 +15,7 @@ class CreateArticlesTestTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('articles', static function (Blueprint $table): void {
             $table->increments('id');
             $table->string('title');
             $table->text('content');

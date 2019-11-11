@@ -19,7 +19,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
      */
     public function itSuccessfullyRegistersEventListeners(): void
     {
-        User::updatingExistingPivot(function ($user, $relation, $properties) {
+        User::updatingExistingPivot(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -38,7 +38,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
             ], $properties);
         });
 
-        User::existingPivotUpdated(function ($user, $relation, $properties) {
+        User::existingPivotUpdated(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -59,7 +59,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
         $user = factory(User::class)->create();
 
-        $articles = factory(Article::class, 2)->create()->each(function (Article $article) use ($user) {
+        $articles = factory(Article::class, 2)->create()->each(static function (Article $article) use ($user): void {
             $article->users()->attach($user);
         });
 
@@ -75,13 +75,13 @@ class UpdateExistingPivotTest extends EventuallyTestCase
      */
     public function itPreventsExistingPivotFromBeingUpdated(): void
     {
-        User::updatingExistingPivot(function () {
+        User::updatingExistingPivot(static function () {
             return false;
         });
 
         $user = factory(User::class)->create();
 
-        $articles = factory(Article::class, 2)->create()->each(function (Article $article) use ($user) {
+        $articles = factory(Article::class, 2)->create()->each(static function (Article $article) use ($user): void {
             $article->users()->attach($user);
         });
 
@@ -107,7 +107,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
     {
         $user = factory(User::class)->create();
 
-        $articles = factory(Article::class, 2)->create()->each(function (Article $article) use ($user) {
+        $articles = factory(Article::class, 2)->create()->each(static function (Article $article) use ($user): void {
             $article->users()->attach($user);
         });
 

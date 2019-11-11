@@ -19,7 +19,7 @@ class DetachTest extends EventuallyTestCase
      */
     public function itSuccessfullyRegistersEventListeners(): void
     {
-        User::detaching(function ($user, $relation, $properties) {
+        User::detaching(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -36,7 +36,7 @@ class DetachTest extends EventuallyTestCase
             ], $properties);
         });
 
-        User::detached(function ($user, $relation, $properties) {
+        User::detached(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('articles', $relation);
@@ -55,7 +55,7 @@ class DetachTest extends EventuallyTestCase
 
         $user = factory(User::class)->create();
 
-        $articles = factory(Article::class, 2)->create()->each(function (Article $article) use ($user) {
+        $articles = factory(Article::class, 2)->create()->each(static function (Article $article) use ($user): void {
             $article->users()->attach($user);
         });
 
@@ -71,13 +71,13 @@ class DetachTest extends EventuallyTestCase
      */
     public function itPreventsModelsFromBeingDetached(): void
     {
-        User::detaching(function () {
+        User::detaching(static function () {
             return false;
         });
 
         $user = factory(User::class)->create();
 
-        $articles = factory(Article::class, 2)->create()->each(function (Article $article) use ($user) {
+        $articles = factory(Article::class, 2)->create()->each(static function (Article $article) use ($user): void {
             $article->users()->attach($user);
         });
 
@@ -100,7 +100,7 @@ class DetachTest extends EventuallyTestCase
     {
         $user = factory(User::class)->create();
 
-        $articles = factory(Article::class, 2)->create()->each(function (Article $article) use ($user) {
+        $articles = factory(Article::class, 2)->create()->each(static function (Article $article) use ($user): void {
             $article->users()->attach($user, [
                 'liked' => (bool) \random_int(0, 1),
             ]);

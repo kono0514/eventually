@@ -15,7 +15,7 @@ class CreateAwardablesTestTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('awardables', function (Blueprint $table) {
+        Schema::create('awardables', static function (Blueprint $table): void {
             $table->unsignedInteger('award_id');
             $table->morphs('awardable');
             $table->unsignedInteger('prize')->nullable();

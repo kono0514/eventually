@@ -18,7 +18,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
      */
     public function itSuccessfullyRegistersEventListeners(): void
     {
-        User::updatingExistingPivot(function ($user, $relation, $properties) {
+        User::updatingExistingPivot(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('awards', $relation);
@@ -39,7 +39,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
             ], $properties);
         });
 
-        User::existingPivotUpdated(function ($user, $relation, $properties) {
+        User::existingPivotUpdated(function ($user, $relation, $properties): void {
             $this->assertInstanceOf(User::class, $user);
 
             $this->assertSame('awards', $relation);
@@ -62,7 +62,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
 
         $user = factory(User::class)->create();
 
-        $awards = factory(Award::class, 2)->create()->each(function (Award $award) use ($user) {
+        $awards = factory(Award::class, 2)->create()->each(static function (Award $award) use ($user): void {
             $award->users()->attach($user);
         });
 
@@ -78,13 +78,13 @@ class UpdateExistingPivotTest extends EventuallyTestCase
      */
     public function itPreventsExistingPivotFromBeingUpdated(): void
     {
-        User::updatingExistingPivot(function () {
+        User::updatingExistingPivot(static function () {
             return false;
         });
 
         $user = factory(User::class)->create();
 
-        $awards = factory(Award::class, 2)->create()->each(function (Award $award) use ($user) {
+        $awards = factory(Award::class, 2)->create()->each(static function (Award $award) use ($user): void {
             $award->users()->attach($user);
         });
 
@@ -110,7 +110,7 @@ class UpdateExistingPivotTest extends EventuallyTestCase
     {
         $user = factory(User::class)->create();
 
-        $awards = factory(Award::class, 2)->create()->each(function (Award $award) use ($user) {
+        $awards = factory(Award::class, 2)->create()->each(static function (Award $award) use ($user): void {
             $award->users()->attach($user);
         });
 

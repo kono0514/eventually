@@ -42,7 +42,7 @@ class FirePivotEventTest extends EventuallyTestCase
             ];
         };
 
-        Event::listen(CustomEvent::class, function () {
+        Event::listen(CustomEvent::class, static function () {
             return false;
         });
 
