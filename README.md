@@ -6,7 +6,7 @@ This package extends the [Eloquent](https://laravel.com/docs/eloquent) ORM by pr
 ## Version Matrix
  Version   | Illuminate    | Status             | PHP Version
 -----------|---------------|--------------------|-------------
- 1.x       | 5.5.x - 6.4.x | Actively supported | >= 7.1.3
+ 1.x       | 5.5.x - 6.5.x | Actively supported | >= 7.1.3
 
 ## Documentation
 The package documentation can be found [here](https://altek.gitlab.io/eventually/).
