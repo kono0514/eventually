@@ -39,6 +39,10 @@ test:7.3:
   image: php:7.3
   <<: *test_definition
 
+test:7.4:
+  image: php:7.4-rc
+  <<: *test_definition
+
 pages:
   image: node:9.11.1
 
