@@ -113,7 +113,7 @@ trait InteractsWithPivotTable
 
         $changes = parent::sync($ids, $detaching);
 
-        $this->parent->firePivotEvent('synced', false, $this->getRelationName(), $properties);
+        $this->parent->firePivotEvent('synced', false, $this->getRelationName(), $properties, $changes);
 
         return $changes;
     }
