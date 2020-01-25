@@ -37,7 +37,7 @@ trait HasEvents
      *
      * @return mixed
      */
-    public function firePivotEvent($event, $halt = true, string $relation = null, array $properties = [])
+    public function firePivotEvent($event, $halt = true, string $relation = null, array $properties = [], array $changes = null)
     {
         if (! isset(static::$dispatcher)) {
             return true;
@@ -57,6 +57,7 @@ trait HasEvents
             $this,
             $relation,
             $properties,
+            $changes,
         ]);
     }
 
